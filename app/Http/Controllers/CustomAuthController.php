@@ -101,6 +101,7 @@ class CustomAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'token' => $token
         ]);
 
         $otp = mt_rand(10000, 999999);
