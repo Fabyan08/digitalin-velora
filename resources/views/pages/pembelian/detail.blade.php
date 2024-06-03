@@ -24,8 +24,10 @@
                                     <h4>Data</h4>
                                 </div>
                             </div>
-
-                            <div class="card-body">
+                            <div style="margin-left:30px">
+                                <h4>Pemesan: {{ $orders[0]->name }}</h4>
+                            </div>
+                            {{-- <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="table-1">
                                         <thead>
@@ -41,28 +43,33 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
 
-                                                    <td>{{ $data->username }}</td>
-                                                    <td> <a href="/orders/detail/{{ $data->snap_token }}"
-                                                            class="btn btn-warning">Detail</a>
-                                                    </td>
-                                                    <td>
-                                                        <form
-                                                            action="{{ route('orders.delete', ['snap_token' => $data->snap_token]) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <button
-                                                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"
-                                                                type="submit"
-                                                                class="btn btn-icon h-fit icon-left btn-danger"
-                                                                style="height: fit-content">
-                                                                Hapus </button>
-                                                        </form>
-                                                    </td>
+                                                    <td>{{ $data->name }}</td>
+
+
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
+                            </div> --}}
+                            @if ($orders[0]->status == 'Pending')
+                                <div class="badge badge-warning">Pending</div>
+                            @else
+                                <div class="badge badge-success">Success</div>
+                            @endif
+                            <div class="row">
+                                @foreach ($orders as $order)
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="{{ asset($order->gambar) }}" alt="Gambar">
+                                                <p>{{ $order->nama }}</p>
+                                                <p>Jumlah: {{ $order->jumlah }}</p>
+                                                <p>Harga : {{ $order->harga }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

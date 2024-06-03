@@ -34,8 +34,9 @@ Route::get('/user', [UserController::class, 'index'])->name('users');
 Route::post('/users/{id}', [BarangController::class, 'delete'])->name('users.delete');
 
 Route::get('/orders', [PembelianController::class, 'index'])->name('orders.index');
-Route::post('/orders/delete/{id}', [PembelianController::class, 'delete'])->name('orders.delete');
+Route::post('/orders/delete/{snap_token}', [PembelianController::class, 'delete'])->name('orders.delete');
 Route::get('/orders/user/{id}', [PembelianController::class, 'order_user'])->name('orders.order_user');
+Route::get('/orders/detail/{snap_token}', [PembelianController::class, 'detail_web'])->name('orders.detail_web');
 
 // Registration
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
