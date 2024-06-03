@@ -33,6 +33,8 @@
                                                 <th class="text-center">#</th>
                                                 <th>Nama</th>
                                                 <th>Nama Barang</th>
+                                                <th>Jumlah</th>
+                                                <th>Harga</th>
                                                 <th>Gambar</th>
                                                 <th>Hapus</th>
                                             </tr>
@@ -44,6 +46,8 @@
 
                                                     <td>{{ $data->name }}</td>
                                                     <td>{{ $data->nama }}</td>
+                                                    <td>{{ $data->jumlah }}</td>
+                                                    <td>{{ $data->harga }}</td>
                                                     <td><img src="{{ asset('storage/' . $data->gambar) }}" width="100"
                                                             height="100"></td>
 

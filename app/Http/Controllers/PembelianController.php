@@ -244,15 +244,16 @@ class PembelianController extends Controller
             $order->snap_token = $snapToken;
             $order->save();
 
-            // Orders::where('snap_token', $snapToken)->update([
-            //     'status' => 'Success'
-            // ]);
+            Orders::where('snap_token', $snapToken)->update([
+                'status' => 'Success'
+            ]);
             // Return payment token in the API response
             return response()->json([
                 'success' => true,
                 'message' => 'Payment request created successfully',
                 'snap_token' => $snapToken,
             ], 201);
+            
         } catch (\Exception $e) {
             // Handle error
             return response()->json([

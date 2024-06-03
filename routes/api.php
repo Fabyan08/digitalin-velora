@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\handleController;
+use App\Http\Controllers\handleNotification;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\UserController;
 /*
@@ -42,4 +43,4 @@ Route::post('/orders/{user_id}/{id}/{jumlah}', [PembelianController::class, 'sto
 // Update
 Route::post('/orders/update_status/{id}', [PembelianController::class, 'update_status'])->name('barangs.update_status');
 
-Route::post('/midtrans/notification', [handleController::class, 'handleNotification']);
+Route::post('/midtrans/notification', [handleNotification::class, 'index']);
