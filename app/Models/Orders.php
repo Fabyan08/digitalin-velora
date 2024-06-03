@@ -14,5 +14,10 @@ class Orders extends Model
         'id',
         'user_id',
         'barang_id',
+        'harga',
+        'nama',
+        'jumlah',
+        'snap_token',
+        'status',
     ];
 }

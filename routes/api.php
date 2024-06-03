@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\handleController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\UserController;
 /*
@@ -36,5 +37,9 @@ Route::get('/barangs_api/{id}', [BarangController::class, 'detail_api'])->name('
 Route::get('/orders_api/user/{id}', [PembelianController::class, 'order_user_api'])->name('orders.order_user_api');
 
 // Route untuk tambah order
-Route::post('/orders/{user_id}/{id}', [PembelianController::class, 'store_api'])->name('barangs.store_api');
+Route::post('/orders/{user_id}/{id}/{jumlah}', [PembelianController::class, 'store_api'])->name('barangs.store_api');
 
+// Update
+Route::post('/orders/update_status/{id}', [PembelianController::class, 'update_status'])->name('barangs.update_status');
+
+Route::post('/midtrans/notification', [handleController::class, 'handleNotification']);

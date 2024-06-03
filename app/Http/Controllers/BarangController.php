@@ -44,7 +44,7 @@ class BarangController extends Controller
             $filePath = 'images/' . $fileName; // Define file path relative to the 'public' directory
 
             // Move the uploaded file to the desired folder
-            $file->move(public_path('images'), $fileName);
+            $file->move(('images'), $fileName);
         } else {
             $filePath = null; // Handle the case where no file is uploaded
         }
@@ -56,12 +56,6 @@ class BarangController extends Controller
             'gambar' => $filePath,
         ]);
 
-
-        Barangs::create([
-            'nama' => $request->name,
-            'harga' => $request->harga,
-            'gambar' => $filePath,
-        ]);
 
         return redirect()->back()->with('plus', 'baru ditambahkan');
     }
