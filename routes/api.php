@@ -38,7 +38,12 @@ Route::get('/barangs_api/{id}', [BarangController::class, 'detail_api'])->name('
 Route::get('/orders_api/user/{id}', [PembelianController::class, 'order_user_api'])->name('orders.order_user_api');
 
 // Route untuk tambah order
-Route::post('/orders/{user_id}/{id}/{jumlah}', [PembelianController::class, 'store_api'])->name('barangs.store_api');
+
+// Route::post('/orders/{user_id}/{id}/{jumlah}', [PembelianController::class, 'store_api'])->name('barangs.store_api'); //ORDER 1
+
+Route::post('/orders', [PembelianController::class, 'store_api'])->name('barangs.store_api'); //ORDER > 1
+Route::get('/orders/detail/{snap_token}', [PembelianController::class, 'detail'])->name('barangs.detail'); //ORDER > 1
+
 
 // Update
 Route::post('/orders/update_status/{id}', [PembelianController::class, 'update_status'])->name('barangs.update_status');
