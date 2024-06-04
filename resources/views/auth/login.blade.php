@@ -26,8 +26,7 @@
                     <div
                         class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="login-brand">
-                            <img src="{{ asset('assets/img/logo.jpg') }}" alt="logo" width="100"
-                                class="shadow-light rounded-circle">
+                            <h1>VELORA</h1>
                         </div>
                         <div class="card card-primary">
                             <div class="card-header">
@@ -44,6 +43,10 @@
 
                                         <x-input id="email" class="form-control" type="email" name="email"
                                             :value="old('email')" required autofocus />
+
+                                        @error('email')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Password -->
@@ -54,11 +57,11 @@
                                             required autocomplete="current-password" />
                                     </div>
 
-
                                     <div class="flex items-center justify-end mt-4">
-                                        <a class="underline text-cennter text-sm text-gray-600 hover:text-gray-900"
+                                        <a class="underline text-center text-sm text-gray-600 hover:text-gray-900"
                                             href="/register">
-                                            Register </a>
+                                            Register
+                                        </a>
                                     </div>
 
                                     <div class="form-group mt-4">
@@ -66,8 +69,9 @@
                                             Login
                                         </button>
                                     </div>
+                                </form>
+
                             </div>
-                            </form>
                         </div>
                     </div>
 

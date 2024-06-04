@@ -20,6 +20,7 @@ class PembelianController extends Controller
             ->join('barangs', 'barangs.id', '=', 'orders.barang_id')
             ->select('orders.snap_token', DB::raw('MAX(users.name) as username'))
             ->groupBy('orders.snap_token')
+            ->orderByDesc('orders.created_at')
             ->get();
 
         // Display the orders

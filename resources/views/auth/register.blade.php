@@ -26,8 +26,8 @@
                     <div
                         class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="login-brand">
-                            <img src="{{ asset('assets/img/logo.jpg') }}" alt="logo" width="100"
-                                class="shadow-light rounded-circle">
+                            <h1>VELORA</h1>
+
                         </div>
                         <div class="card card-primary">
                             <div class="card-header">
@@ -45,6 +45,10 @@
 
                                         <x-input id="name" class="form-control" type="text" name="name"
                                             :value="old('name')" required autofocus />
+
+                                        @error('name')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Email Address -->
@@ -53,6 +57,10 @@
 
                                         <x-input id="email" class="form-control" type="email" name="email"
                                             :value="old('email')" required />
+
+                                        @error('email')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Password -->
@@ -61,9 +69,19 @@
 
                                         <x-input id="password" class="form-control" type="password" name="password"
                                             required autocomplete="new-password" />
+
+                                        @error('password')
+                                            <span class="text-red-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
+                                    <!-- Confirm Password -->
+                                    <div class="mt-4">
+                                        <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
+                                        <x-input id="password_confirmation" class="form-control" type="password"
+                                            name="password_confirmation" required />
+                                    </div>
 
                                     <div class="flex items-center justify-end mt-4">
                                         <a class="underline text-sm text-gray-600 hover:text-gray-900"
@@ -72,10 +90,11 @@
                                         </a>
 
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
+                                            Register
                                         </button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
 

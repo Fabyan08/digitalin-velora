@@ -19,19 +19,20 @@ class CustomAuthController extends Controller
 
     public function customLogin(Request $request)
     {
-        $validator =  $request->validate([
+        $validator = $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
 
-
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                ->withSuccess('Signed in');
+            return redirect()->intended('dashboard')->withSuccess('Signed in');
         }
-        $validator['emailPassword'] = 'Email address or password is incorrect.';
-        return redirect("login")->withErrors($validator);
+
+        // Use withErrors method to attach the error messages to the validator instance
+        return redirect("login")->withErrors([
+            'email' => 'Email address or password is incorrect.',
+        ]);
     }
 
     public function customLogin_api(Request $request)
@@ -67,7 +68,6 @@ class CustomAuthController extends Controller
 
     public function customRegistration(Request $request)
     {
-
         $token = Hash::make(Str::random(80));
 
         $request->validate([
@@ -81,12 +81,15 @@ class CustomAuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'token' => $token
-        ]);
-        Auth::login($user);
 
+        ]);
+
+        // Automatically log in the newly registered user
+        Auth::login($user);
 
         return redirect("dashboard")->withSuccess('You have registered successfully');
     }
+
     public function customRegistration_api(Request $request)
     {
         $token = Str::random(80);

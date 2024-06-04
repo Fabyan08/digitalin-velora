@@ -25,33 +25,10 @@
                                 </div>
                             </div>
                             <div style="margin-left:30px">
-                                <h4>Pemesan: {{ $orders[0]->name }}</h4>
+                                <h4>Pemesan: {{ $orders[0]->name }} </h4>
+                                <h6>Tanggal: {{ date('j F Y', strtotime($orders[0]->created_at)) }}</h6>
                             </div>
-                            {{-- <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">#</th>
-                                                <th>Nama Pemesan</th>
-                                                <th>Detail</th>
-                                                <th>Hapus</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($orders as $data)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
 
-                                                    <td>{{ $data->name }}</td>
-
-
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div> --}}
                             @if ($orders[0]->status == 'Pending')
                                 <div class="badge badge-warning">Pending</div>
                             @else
@@ -62,7 +39,7 @@
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-body">
-                                                <img src="{{ asset($order->gambar) }}" alt="Gambar">
+                                                <img src="{{ asset($order->gambar) }}" width="100" alt="Gambar">
                                                 <p>{{ $order->nama }}</p>
                                                 <p>Jumlah: {{ $order->jumlah }}</p>
                                                 <p>Harga : {{ $order->harga }}</p>

@@ -23,20 +23,23 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-Route::get('/barang', [BarangController::class, 'index'])->name('barangs');
-Route::post('/barang', [BarangController::class, 'store'])->name('barangs.store');
-Route::post('/barang/{id}', [BarangController::class, 'delete'])->name('barangs.delete');
-Route::post('/barang/update/{id}', [BarangController::class, 'update'])->name('barangs.update');
+    Route::get('/barang', [BarangController::class, 'index'])->name('barangs');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barangs.store');
+    Route::post('/barang/{id}', [BarangController::class, 'delete'])->name('barangs.delete');
+    Route::post('/barang/update/{id}', [BarangController::class, 'update'])->name('barangs.update');
 
-Route::get('/user', [UserController::class, 'index'])->name('users');
-Route::post('/users/{id}', [BarangController::class, 'delete'])->name('users.delete');
+    Route::get('/user', [UserController::class, 'index'])->name('users');
+    Route::post('/users/{id}', [BarangController::class, 'delete'])->name('users.delete');
 
-Route::get('/orders', [PembelianController::class, 'index'])->name('orders.index');
-Route::post('/orders/delete/{snap_token}', [PembelianController::class, 'delete'])->name('orders.delete');
-Route::get('/orders/user/{id}', [PembelianController::class, 'order_user'])->name('orders.order_user');
-Route::get('/orders/detail/{snap_token}', [PembelianController::class, 'detail_web'])->name('orders.detail_web');
+    Route::get('/orders', [PembelianController::class, 'index'])->name('orders.index');
+    Route::post('/orders/delete/{snap_token}', [PembelianController::class, 'delete'])->name('orders.delete');
+    Route::get('/orders/user/{id}', [PembelianController::class, 'order_user'])->name('orders.order_user');
+    Route::get('/orders/detail/{snap_token}', [PembelianController::class, 'detail_web'])->name('orders.detail_web');
+});
+
 
 // Registration
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
