@@ -50,10 +50,10 @@
                                             @foreach ($barang as $data)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td><img src="{{ asset($data->gambar) }}" width="100"
-                                                            height="100"></td>
+                                                    <td><img src="{{ asset($data->gambar) }}" width="100" height="100">
+                                                    </td>
                                                     <td>{{ $data->nama }}</td>
-                                                    <td>{{ $data->harga }}</td>
+                                                    <td>{{ 'Rp' . number_format($data->harga, 0, ',', '.') }}</td>
                                                     <td><button data-toggle="modal"
                                                             data-target="#edit-modal-{{ $data->id }}"
                                                             class="btn btn-warning">Edit</button></td>
@@ -104,10 +104,12 @@
                                 </div>
                                 <div class="mt-4">
                                     <label for="harga">Harga </label>
-                                    <input id="harga" class="form-control" type="number" name="harga"
-                                        :value="old('harga')" required autofocus autocomplete="harga" />
+                                    <input id="harga" class="form-control" type="text" name="harga"
+                                        :value="old('harga')" required autofocus autocomplete="harga"
+                                        oninput="formatRupiah(this)" />
                                     <p :messages="$errors - > get('harga')" class="mt-2" />
                                 </div>
+
                                 <div class="mt-4">
                                     <label for="gambar">Gambar </label>
                                     <input id="gambar" class="form-control" type="file" name="gambar"
@@ -129,6 +131,8 @@
             </div>
         </div>
     </div>
+
+
     @foreach ($barang as $data)
         <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal-{{ $data->id }}">
             <div class="modal-dialog modal-lg" role="document">
@@ -153,8 +157,9 @@
                                     </div>
                                     <div class="mt-4">
                                         <label for="harga">Harga </label>
-                                        <input id="harga" class="form-control" type="number" name="harga"
-                                            value="{{ $data->harga }}" required autofocus autocomplete="harga" />
+                                        <input id="harga" class="form-control" type="text" name="harga"
+                                            value="{{ $data->harga }}" required autofocus autocomplete="harga"
+                                            oninput="formatRupiah(this)" />
                                         <p :messages="$errors - > get('harga')" class="mt-2" />
                                     </div>
                                     <div class="mt-4">
@@ -179,4 +184,22 @@
             </div>
         </div>
     @endforeach
+    <script>
+        function formatRupiah(element) {
+            var value = element.value;
+            value = value.replace(/[^,\d]/g, '').toString();
+            var split = value.split(',');
+            var sisa = split[0].length % 3;
+            var rupiah = split[0].substr(0, sisa);
+            var ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                var separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            element.value = rupiah;
+        }
+    </script>
 @endsection

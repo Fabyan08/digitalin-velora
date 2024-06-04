@@ -42,7 +42,8 @@
                                                 <img src="{{ asset($order->gambar) }}" width="100" alt="Gambar">
                                                 <p>{{ $order->nama }}</p>
                                                 <p>Jumlah: {{ $order->jumlah }}</p>
-                                                <p>Harga : {{ $order->harga }}</p>
+                                                <p>Harga : {{ 'Rp' . number_format($order->harga, 0, ',', '.') }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

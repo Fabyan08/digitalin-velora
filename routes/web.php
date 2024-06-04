@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/barang/update/{id}', [BarangController::class, 'update'])->name('barangs.update');
 
     Route::get('/user', [UserController::class, 'index'])->name('users');
-    Route::post('/users/{id}', [BarangController::class, 'delete'])->name('users.delete');
+    Route::post('/users/{id}', [UserController::class, 'delete'])->name('users.delete');
 
     Route::get('/orders', [PembelianController::class, 'index'])->name('orders.index');
     Route::post('/orders/delete/{snap_token}', [PembelianController::class, 'delete'])->name('orders.delete');

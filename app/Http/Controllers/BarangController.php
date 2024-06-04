@@ -36,6 +36,7 @@ class BarangController extends Controller
             'gambar' => 'required|file|mimes:jpeg,png,jpg,gif',
         ]);
 
+        $harga = str_replace('.', '', $request->harga);
 
         // Handle file upload
         if ($request->hasFile('gambar')) {
@@ -52,7 +53,7 @@ class BarangController extends Controller
         // Create a new record in the database
         Barangs::create([
             'nama' => $request->name,
-            'harga' => $request->harga,
+            'harga' => $harga,
             'gambar' => $filePath,
         ]);
 
@@ -79,11 +80,12 @@ class BarangController extends Controller
 
         // Find the existing record
         $barang = Barangs::findOrFail($id);
+        $harga = str_replace('.', '', $request->harga);
 
         // Prepare data for updating
         $data = [
             'nama' => $request->input('name'),
-            'harga' => $request->input('harga'),
+            'harga' => $harga,
         ];
 
         // Handle file upload if a new file is provided
