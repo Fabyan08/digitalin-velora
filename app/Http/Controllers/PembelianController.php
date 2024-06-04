@@ -55,17 +55,25 @@ class PembelianController extends Controller
 
         return view('pages.pembelian.index', compact('orders'));
     }
+    // 2024-06-04 09:15:44
     public function order_user_api($user_id)
     {
         $orders = DB::table('orders')
             ->join('users', 'users.id', '=', 'orders.user_id')
             ->join('barangs', 'barangs.id', '=', 'orders.barang_id')
             ->where('orders.user_id', $user_id)
-            ->select('orders.*', 'users.name as user_name', 'barangs.nama as barang_name')
+            ->select(
+                'orders.snap_token',
+                DB::raw('MIN(orders.created_at) as created_at'),
+                DB::raw('SUM(orders.harga * orders.jumlah) as total_harga'),
+            )
+            ->groupBy('orders.snap_token')
+            ->orderBy('created_at', 'desc') // Order by created_at in descending order
             ->get();
 
         return response()->json($orders);
     }
+
     public function store(Request $request, $id)
     {
         Orders::create([

@@ -42,7 +42,7 @@ Route::get('/orders_api/user/{id}', [PembelianController::class, 'order_user_api
 // Route::post('/orders/{user_id}/{id}/{jumlah}', [PembelianController::class, 'store_api'])->name('barangs.store_api'); //ORDER 1
 
 Route::post('/orders', [PembelianController::class, 'store_api'])->name('barangs.store_api'); //ORDER > 1
-Route::get('/orders/detail/{snap_token}', [PembelianController::class, 'detail'])->name('barangs.detail'); //ORDER > 1
+Route::get('/orders/detail/{snap_token}', [PembelianController::class, 'detail'])->name('barangs.detail'); //GET ORDER > 1
 
 
 // Update
