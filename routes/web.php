@@ -41,26 +41,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-// Registration
+// Auth
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 
 
-// API =====================
-
-// Get Barang
-// Route::get('/barangs_api', [BarangController::class, 'index_api'])->name('barangs_api');
-
-// Get User
-// Route::get('/users_api', [UserController::class, 'index_api'])->name('users');
-
-// Auth
-// Route::post('/custom-registration_api', [CustomAuthController::class, 'customRegistration_api'])->name('register.custom_api');
-// Route::post('/custom-login_api', [CustomAuthController::class, 'customLogin_api'])->name('login.custom_api');
-
-// Lihat riwayat
-// Route::get('/orders_api/user/{id}', [PembelianController::class, 'order_user_api'])->name('orders.order_user_api');
 
 
 require __DIR__ . '/auth.php';

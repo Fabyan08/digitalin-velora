@@ -157,10 +157,6 @@ class CustomAuthController extends Controller
     {
         Auth::logout();
 
-        // If you're using stateful authentication with Sanctum,
-        // you may also want to revoke the user's tokens.
-        // Auth::user()->tokens()->delete();
-
         return response()->json([
             'message' => 'Successfully logged out'
         ]);

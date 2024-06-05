@@ -9,7 +9,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barang = Barangs::all();
+        $barang = Barangs::all()->sortByDesc('created_at');
 
         return view('pages.barang.index', compact('barang'));
     }
@@ -22,7 +22,6 @@ class BarangController extends Controller
     }
     public function detail_api($id)
     {
-        // Get Detail Barang ny id
         $barang =  Barangs::find($id);
 
         return response()->json($barang);

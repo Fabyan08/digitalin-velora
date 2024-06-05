@@ -56,7 +56,6 @@ class PembelianController extends Controller
 
         return view('pages.pembelian.index', compact('orders'));
     }
-    // 2024-06-04 09:15:44
     public function order_user_api($user_id)
     {
         $orders = DB::table('orders')
@@ -87,72 +86,6 @@ class PembelianController extends Controller
 
 
 
-    // STORE DONE 4 BENARRR!
-    // public function store_api($user_id, $id, $jumlah)
-    // {
-    //     $product = DB::table('barangs')->where('id', $id)->first(['harga', 'nama']);
-
-    //     if (!$product) {
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'Product not found',
-    //         ], 404);
-    //     }
-
-    //     $totalAmount = $product->harga * $jumlah;
-
-    //     $order = Orders::create([
-    //         'user_id' => $user_id,
-    //         'barang_id' => $id,
-    //         'harga' => $product->harga,
-    //         'nama' => $product->nama,
-    //         'jumlah' => $jumlah,
-    //         'status' => 'Pending',
-    //         'snap_token' => '',
-    //     ]);
-
-    //     \Midtrans\Config::$serverKey = "SB-Mid-server-fEaX80yjErVaBHqIapHIch2c";
-    //     \Midtrans\Config::$isProduction = false; // Set to true for production environment
-
-    //     // Create payment request
-    //     $params = [
-    //         'transaction_details' => [
-    //             'order_id' => $order->id,
-    //             'gross_amount' => $totalAmount, // Use the calculated total amount
-    //         ],
-    //         'credit_card' => [
-    //             'secure' => true,
-    //         ],
-    //     ];
-
-    //     try {
-    //         // Get Snap payment token
-    //         $snapToken = \Midtrans\Snap::getSnapToken($params);
-
-    //         // Update the order with the Snap token
-    //         $order->snap_token = $snapToken;
-    //         $order->save();
-
-    //         Orders::where('snap_token', $snapToken)->update([
-    //             'status' => 'Success'
-    //         ]);
-    //         // Return payment token in the API response
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Payment request created successfully',
-    //             'snap_token' => $snapToken,
-    //         ], 201);
-    //     } catch (\Exception $e) {
-    //         // Handle error
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'Failed to create payment request',
-    //             'error' => $e->getMessage(),
-    //         ], 500);
-    //     }
-    // }
-
-    // STORE API > 2
 
     public function store_api(Request $request)
     {
@@ -269,17 +202,4 @@ class PembelianController extends Controller
             'message' => 'Order status updated successfully',
         ], 200);
     }
-
-    // PILIH BERDASARKAN ID
-    // public function update_status($id)
-    // {
-    //     Orders::where('id', $id)->update([
-    //         'status' => 'Success'
-    //     ]);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'Order status updated successfully',
-    //     ], 200);
-    // }
 }

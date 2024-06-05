@@ -4,16 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Kanindo Syariah</title>
+    <title>VELORA</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo.jpg') }}" type="image/x-icon">
-    <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-social/bootstrap-social.css') }}">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 </head>
@@ -37,11 +34,10 @@
                                 <form method="POST" action="{{ route('login.custom') }}">
                                     @csrf
 
-                                    <!-- Email Address -->
                                     <div>
-                                        <x-label for="email" :value="__('Email')" />
+                                        <label for="email">Email </label>
 
-                                        <x-input id="email" class="form-control" type="email" name="email"
+                                        <input id="email" class="form-control" type="email" name="email"
                                             :value="old('email')" required autofocus />
 
                                         @error('email')
@@ -49,11 +45,10 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Password -->
                                     <div class="mt-4">
-                                        <x-label for="password" :value="__('Password')" />
+                                        <label for="password">Password</label>
 
-                                        <x-input id="password" class="form-control" type="password" name="password"
+                                        <input id="password" class="form-control" type="password" name="password"
                                             required autocomplete="current-password" />
                                     </div>
 

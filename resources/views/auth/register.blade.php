@@ -4,16 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Kanindo Syariah</title>
+    <title>VELORA</title>
     <link rel="shortcut icon" href="{{ asset('assets/img/logo.jpg') }}" type="image/x-icon">
-    <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-social/bootstrap-social.css') }}">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 </head>
@@ -41,9 +38,9 @@
 
                                     <!-- Name -->
                                     <div>
-                                        <x-label for="name" :value="__('Name')" />
+                                        <label for="name">Nama </label>
 
-                                        <x-input id="name" class="form-control" type="text" name="name"
+                                        <input id="name" class="form-control" type="text" name="name"
                                             :value="old('name')" required autofocus />
 
                                         @error('name')
@@ -53,9 +50,9 @@
 
                                     <!-- Email Address -->
                                     <div class="mt-4">
-                                        <x-label for="email" :value="__('Email')" />
+                                        <label for="email"> Email </label>
 
-                                        <x-input id="email" class="form-control" type="email" name="email"
+                                        <input id="email" class="form-control" type="email" name="email"
                                             :value="old('email')" required />
 
                                         @error('email')
@@ -65,9 +62,9 @@
 
                                     <!-- Password -->
                                     <div class="mt-4">
-                                        <x-label for="password" :value="__('Password')" />
+                                        <label for="password"> Password </label>
 
-                                        <x-input id="password" class="form-control" type="password" name="password"
+                                        <input id="password" class="form-control" type="password" name="password"
                                             required autocomplete="new-password" />
 
                                         @error('password')
@@ -75,13 +72,6 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Confirm Password -->
-                                    <div class="mt-4">
-                                        <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                                        <x-input id="password_confirmation" class="form-control" type="password"
-                                            name="password_confirmation" required />
-                                    </div>
 
                                     <div class="flex items-center justify-end mt-4">
                                         <a class="underline text-sm text-gray-600 hover:text-gray-900"
@@ -104,7 +94,6 @@
         </section>
     </div>
 
-    <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/modules/popper.js') }}"></script>
     <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
@@ -113,11 +102,8 @@
     <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
 
-    <!-- JS Libraies -->
 
-    <!-- Page Specific JS File -->
 
-    <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 </body>
